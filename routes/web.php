@@ -16,3 +16,8 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('restaurants',  ['uses' => 'RestaurantController@search_restaurants']);
+    $router->get('restaurants/{id}', ['uses' => 'RestaurantController@restaurant_details']);
+});
